@@ -28,19 +28,55 @@ const getRandomInt = (min, max) => {
   return Math.floor(Math.random() * (max - min)) + min;
 }
 
-const generateHint = () =>  {
-  // your code here
+const generateHint = (guess) =>  {
+  
+  let matchExact = 0
+  let matchLoose = 0
+
+  let guessy = Array.from(guess)
+  let solvy = Array.from(solution)
+  
+  // loops through solution and guess arrays to check for equality at each index
+  // if equal splices at that index and replaces with null
+  // adds +1 to matchExact per match
+  solvy.forEach((e,i) => {
+    if(e === guessy[i]){
+      solvy.splice(i,1,null);
+      matchExact += 1
+    }
+  });
+  // loops through remaining solution elements to check for matches in guess array. adds tally +1 for loose matches 
+  solvy.forEach((e) => {
+    if(guessy.indexOf(e) > -1 )
+    matchLoose += 1
+  });
+    
+  // Concats and returns 
+  let hint = matchExact + '-' + matchLoose
+  
+  return hint
+   
 }
 
 const mastermind = (guess) => {
-  solution = 'abcd'; // Comment this out to generate a random solution
-  // your code here
+  // solution = 'abcd'; // Comment this out to generate a random solution
+  console.log('board:', board)
+  if( guess == solution){
+    return 'You guessed it!'
+  }
+  else{
+    board.push(generateHint(guess));
+
+  }
 }
 
 
 const getPrompt = () =>  {
   rl.question('guess: ', (guess) => {
     mastermind(guess);
+    if(board.length === 10){
+      return console.log('You ran out of turns! The solution was', solution)
+    }
     printBoard();
     getPrompt();
   });
