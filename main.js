@@ -45,13 +45,13 @@ const generateHint = (guess) =>  {
       matchExact += 1
     }
   });
-  console.log(solvy)
+  
   // loops through remaining solution elements to check for matches in guess array. adds tally +1 for loose matches 
   solvy.forEach((e) => {
     if(guessy.indexOf(e) > -1 )
     matchLoose += 1
   });
-    console.log('after solvy',solvy)
+  
   // Concats and returns 
   let hint = matchExact + '-' + matchLoose
   
