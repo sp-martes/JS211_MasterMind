@@ -33,8 +33,8 @@ const generateHint = (guess) =>  {
   let matchExact = 0
   let matchLoose = 0
 
-  let guessy = Array.from(guess)
-  let solvy = Array.from(solution)
+  let guessy = guess.split('');
+  let solvy = solution.split('');
   
   // loops through solution and guess arrays to check for equality at each index
   // if equal splices at that index and replaces with null
