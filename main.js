@@ -65,7 +65,7 @@ const mastermind = (guess) => {
     return 'You guessed it!'
   }
   else{
-    board.push(generateHint(guess));
+    board.push(guess + '-' + generateHint(guess));
 
   }
 }
