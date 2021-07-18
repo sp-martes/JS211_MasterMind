@@ -38,7 +38,7 @@ const generateHint = (guess) =>  {
   
   // loops through solution and guess arrays to check for equality at each index
   // if equal. solution element at that index = null
-  // adds +1 to matchExact per match
+  // adds +1 per matchExact  
   solvy.forEach((e,i) => {
     if(e === guessy[i]){
       solvy[i] = null
@@ -46,7 +46,7 @@ const generateHint = (guess) =>  {
     }
   });
   
-  // loops through remaining solution elements to check for matches in guess array. adds tally +1 for loose matches 
+  // loops through remaining solution elements to check for matches in guess array. adds +1 for loose matches 
   solvy.forEach((e) => {
     if(guessy.indexOf(e) > -1 )
     matchLoose += 1
@@ -56,18 +56,14 @@ const generateHint = (guess) =>  {
   let hint = matchExact + '-' + matchLoose
   
   return hint
-   
 }
 
 const mastermind = (guess) => {
-  // solution = 'abcd'; // Comment this out to generate a random solution
-  console.log('board:', board)
   if( guess == solution){
     return 'You guessed it!'
   }
   else{
     board.push(guess + '-' + generateHint(guess));
-
   }
 }
 
