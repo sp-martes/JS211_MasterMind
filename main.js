@@ -42,13 +42,15 @@ const generateHint = (guess) =>  {
   solvy.forEach((e,i) => {
     if(e === guessy[i]){
       solvy[i] = null
+      guessy[i] = null
       matchExact += 1
     }
   });
-  
+  console.log(solvy)
+  console.log(guessy)
   // loops through remaining solution elements to check for matches in guess array. adds +1 for loose matches 
-  solvy.forEach((e) => {
-    if(guessy.indexOf(e) > -1 )
+  solvy.forEach((e,i) => {
+    if(guessy.indexOf(e) > -1 && guessy[i] != null)
     matchLoose += 1
   });
   
@@ -57,7 +59,7 @@ const generateHint = (guess) =>  {
   
   return hint
 }
-
+// 
 const mastermind = (guess) => {
   if( guess == solution){
     return 'You guessed it!'
